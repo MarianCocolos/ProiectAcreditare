@@ -2,15 +2,13 @@ package org.fasttrackit.steps.serenity;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
-import org.fasttrackit.pages.AccountPage;
 import org.fasttrackit.pages.HomePage;
-import org.fasttrackit.pages.LoginPage;
+import org.fasttrackit.pages.MyAccountPage;
 
 public class LoginSteps extends ScenarioSteps {
 
     private HomePage homePage;
-    private LoginPage loginPage;
-    private AccountPage accountPage;
+    private MyAccountPage myAccountPage;
 
     @Step
     public void navigateToHomepage() {
@@ -25,18 +23,18 @@ public class LoginSteps extends ScenarioSteps {
 
     @Step
     public void setCredentials(String email, String pass) {
-        loginPage.setEmailField(email);
-        loginPage.setPasswordField(pass);
+       myAccountPage.setEmailField(email);
+       myAccountPage.setPasswordField(pass);
     }
 
     @Step
     public void clickLogin() {
-        loginPage.clickLoginButton();
+        myAccountPage.clickLoginButton();
     }
 
     @Step
     public void verifyUsernameMessage(String userName) {
-        accountPage.verifyWelcomeMessage(userName);
+        myAccountPage.verifyWelcomeMessage(userName);
     }
 
     @Step
@@ -46,4 +44,12 @@ public class LoginSteps extends ScenarioSteps {
         setCredentials(email, password);
         clickLogin();
     }
+
+    @Step
+    public void verifyInvalidUsernameMessage(){
+        myAccountPage.verifyInvalidUsernameMessage();
+    }
+
+    @Step
+    public void verifyIncorrectPasswordMessage() {myAccountPage.verifyErrorIncorrectPassword();}
 }

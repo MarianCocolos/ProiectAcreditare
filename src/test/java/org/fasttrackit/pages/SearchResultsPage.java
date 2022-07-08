@@ -9,12 +9,12 @@ import java.util.List;
 
 public class SearchResultsPage extends PageObject {
 
-    @FindBy(css = ".products-grid li.item")
+    @FindBy(css = ".products li")
     private List<WebElementFacade> productsList;
 
     public boolean checkListForProduct(String productName){
         for(WebElementFacade element : productsList){
-            if(element.findElement(By.cssSelector(".product-name a")).getText().equalsIgnoreCase(productName)){
+            if(element.findElement(By.cssSelector(".collection_title")).getText().equalsIgnoreCase(productName)){
                 return true;
             }
         }
@@ -22,8 +22,8 @@ public class SearchResultsPage extends PageObject {
     }
     public void selectProductFromList(String product){
         for(WebElementFacade element : productsList){
-            if(element.findElement(By.cssSelector(".product-name a")).getText().equalsIgnoreCase(product)){
-                element.findElement(By.cssSelector("a.product-image")).click();
+            if(element.findElement(By.cssSelector(".collection_title")).getText().equalsIgnoreCase(product)){
+                element.findElement(By.cssSelector("a .onsale")).click();
                 break;
             }
         }

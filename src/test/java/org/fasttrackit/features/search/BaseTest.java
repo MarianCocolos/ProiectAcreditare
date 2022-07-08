@@ -3,10 +3,7 @@ package org.fasttrackit.features.search;
 import net.serenitybdd.junit.runners.SerenityRunner;
 import net.thucydides.core.annotations.Managed;
 import net.thucydides.core.annotations.Steps;
-import org.fasttrackit.steps.serenity.CartSteps;
-import org.fasttrackit.steps.serenity.LoginSteps;
-import org.fasttrackit.steps.serenity.ProductSteps;
-import org.fasttrackit.steps.serenity.SearchSteps;
+import org.fasttrackit.steps.serenity.*;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +22,10 @@ public class BaseTest {
     protected ProductSteps productSteps;
     @Steps
     protected CartSteps cartSteps;
+    @Steps
+    protected HomePageSteps homePageSteps;
+    @Steps
+    protected RegisterSteps registerSteps;
 
     @Before
     public void maximize(){
