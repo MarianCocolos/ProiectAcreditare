@@ -26,6 +26,10 @@ public class BaseTest {
     protected HomePageSteps homePageSteps;
     @Steps
     protected RegisterSteps registerSteps;
+    @Steps
+    protected ShopSteps shopSteps;
+    @Steps
+    protected CheckoutSteps checkoutSteps;
 
     @Before
     public void maximize(){

@@ -22,6 +22,9 @@ public class MyAccountPage extends BasePage {
     @FindBy(css = ".woocommerce-error li strong")
     private WebElementFacade emailAddressMissingError;
 
+    @FindBy(css = ".woocommerce-error")
+    private WebElementFacade loginWithoutCredentials;
+
     @FindBy(id = "reg_email")
     private WebElementFacade registerEmailField;
 
@@ -77,6 +80,10 @@ public class MyAccountPage extends BasePage {
 
     public void verifyEmailAddressErrorUsed(){
         emailAddressErrorUsed.getText().equals("Error: An account is already registered with your email address. Please log in.");
+    }
+
+    public void verifyLoginWithoutCredentialsMessage() {
+        loginWithoutCredentials.getText().equals("Error: Username is required.");
     }
 
     public void verifyEmailAddressMissingError(){

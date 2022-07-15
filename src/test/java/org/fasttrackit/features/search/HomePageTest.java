@@ -15,16 +15,19 @@ public class HomePageTest extends BaseTest{
 
     @Test
     public void verifyReadMorePage() {
+
         homePageSteps.verifyReadMorePage();
     }
 
     @Test
     public void verifyUncategorizedPageTitle() {
+
         homePageSteps.verifyUncategorizedPageLink();
     }
 
     @Test
     public void verifyArchivesPage() {
+
         homePageSteps.verifyArchivePageLink();
     }
 

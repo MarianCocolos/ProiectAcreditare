@@ -7,10 +7,14 @@ import org.openqa.selenium.By;
 
 import java.util.List;
 
-public class SearchResultsPage extends PageObject {
+public class SearchResultsPage extends BasePage{
 
     @FindBy(css = ".products li")
     private List<WebElementFacade> productsList;
+    @FindBy(css = ".entry-title.ak-container")
+    private WebElementFacade searchResultsText;
+    @FindBy(css = ".woocommerce-info")
+    private WebElementFacade productResultsMessage;
 
     public boolean checkListForProduct(String productName){
         for(WebElementFacade element : productsList){
@@ -28,4 +32,8 @@ public class SearchResultsPage extends PageObject {
             }
         }
     }
+
+    public void verifySearchResultsText(){searchResultsText.containsOnlyText("SEARCH RESULTS: “123@%&*(”");}
+
+    public void verifyProductResultsMessage(){productResultsMessage.getText().equals("No products were found matching your selection.");}
 }

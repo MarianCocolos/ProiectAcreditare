@@ -9,22 +9,15 @@ public class CartTest extends BaseTest {
     public void addProductToCart() {
         loginSteps.doLogin(Constants.USER_EMAIL, Constants.USER_PASS);
         searchSteps.doSearch("beanie");
-        productSteps.selectProductFromList("Beanie with Logo");
+        productSteps.selectProductFromList("Beanie");
         cartSteps.clickAddToCart();
-        cartSteps.verifySuccessMessage("Beanie with Logo");
+        cartSteps.verifySuccessMessage("Beanie");
     }
 
     @Test
     public void verifyPricesTest() {
         loginSteps.doLogin(Constants.USER_EMAIL, Constants.USER_PASS);
-        searchSteps.doSearch("beanie");
-        productSteps.selectProductFromList("Beanie with Logo");
-        cartSteps.clickAddToCart();
-        cartSteps.clickViewCartButton();
-        searchSteps.doSearch("beanie");
-        productSteps.selectProductFromList("Beanie with Logo");
-        cartSteps.clickAddToCart();
-        cartSteps.clickViewCartButton();
+        cartSteps.addProductsToCart();
         cartSteps.checkCartSubtotalIsCorrect();
         cartSteps.checkCartGrandTotalIsCorrect();
     }
@@ -36,6 +29,11 @@ public class CartTest extends BaseTest {
         cartSteps.clickAddToCart();
         cartSteps.clickViewCartButton();
         cartSteps.clickRemoveCartButton();
-       // cartSteps.verifySuccessMessage("Beanie with Logo");
+        cartSteps.verifySuccessMessageRemoveProduct("Beanie with Logo");
+    }
+    @Test
+    public void verifyProceedToCheckoutButton(){
+        cartSteps.verifyProceedToCheckoutButton();
+        checkoutSteps.verifyProceedToCheckoutSuccess();
     }
 }

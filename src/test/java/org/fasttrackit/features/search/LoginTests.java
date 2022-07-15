@@ -24,4 +24,10 @@ public class LoginTests extends BaseTest{
         loginSteps.doLogin(Constants.USER_EMAIL,"1234567");
         loginSteps.verifyIncorrectPasswordMessage();
     }
+
+    @Test
+    public void loginWithoutCredentials() {
+        loginSteps.doLogin("","");
+        loginSteps.verifyLoginWithoutCredentialsMessage();
+    }
 }
