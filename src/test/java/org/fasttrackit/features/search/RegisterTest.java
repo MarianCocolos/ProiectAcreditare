@@ -23,4 +23,5 @@ public class RegisterTest extends BaseTest{
         registerSteps.doRegister("","");
         registerSteps.verifyRegisterWithoutCredentials();
     }
+
 }

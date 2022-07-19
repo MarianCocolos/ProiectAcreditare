@@ -23,10 +23,7 @@ public class ProductTest extends BaseTest{
         loginSteps.doLogin(Constants.USER_EMAIL, Constants.USER_PASS);
         searchSteps.doSearch("beanie");
         productSteps.selectProductFromList("Beanie");
-        productSteps.clickReviewsCategory();
-        productSteps.setRatingFiveStars();
-        productSteps.writeReview("Good product!");
-        productSteps.clickSubmitButton();
+        productSteps.writeReviewProduct();
         productSteps.verifyAwaitingApprovalReviewMessage();
     }
 

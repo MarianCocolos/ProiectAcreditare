@@ -3,6 +3,7 @@ package org.fasttrackit.pages;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 
 import java.util.List;
@@ -25,11 +26,22 @@ public class ShopPage extends BasePage{
     private WebElementFacade selectFromDropdown;
     @FindBy(css = ".collection_title")
     private WebElementFacade firstProductByPopularity;
+    @FindBy(css = ".ajax_add_to_cart")
+    private WebElementFacade addToCartButton;
+    @FindBy(css = ".wc-forward")
+    private WebElementFacade viewCartButton;
+    @FindBy(css = ".products li")
+    private List<WebElementFacade> productsShopList;
 
+    public void clickAddToCartButton(){clickOn(addToCartButton);}
+    public void clickViewCartButton(){clickOn(viewCartButton);}
 
-    public void verifyShopPageTitle(){shopPageTitle.getText().equals("SHOP");}
+    public void verifyShopPageTitle(String text){shopPageTitle.getText();
+    Assert.assertEquals("SHOP",text);
+    }
 
-    public void orderProductsDropdown(){ clickOn(selectFromDropdown);
+    public void orderProductsDropdown(){
+        clickOn(selectFromDropdown);
     }
 
     public void selectNewness(){
@@ -48,6 +60,15 @@ public class ShopPage extends BasePage{
         orderProductsDropdown();clickOn(selectByAverageRating);
     }
     public void selectFirstProductByPopularity(){firstProductByPopularity.click();}
+
+    public void selectProductFromShopList(String product){
+        for(WebElementFacade element : productsShopList){
+            if(element.findElement(By.cssSelector(".collection_title")).getText().equalsIgnoreCase(product)){
+                element.click();
+               break;
+           }
+       }
+    }
 
 
 }

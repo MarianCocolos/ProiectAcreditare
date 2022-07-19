@@ -8,26 +8,23 @@ public class HomePageTest extends BaseTest{
 
 
     @Test
-    public void verifyHomePageTitle(){
+    public void verifyWelcomeHomePageMessage(){
         homePage.open();
-        homePageSteps.verifyHomePageTitle();
+        homePageSteps.verifyWelcomeHomePageMessage();
     }
 
     @Test
     public void verifyReadMorePage() {
-
-        homePageSteps.verifyReadMorePage();
+        homePageSteps.verifyReadMorePage("Hello world!");
     }
 
     @Test
     public void verifyUncategorizedPageTitle() {
-
         homePageSteps.verifyUncategorizedPageLink();
     }
 
     @Test
     public void verifyArchivesPage() {
-
         homePageSteps.verifyArchivePageLink();
     }
 

@@ -4,6 +4,9 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import net.thucydides.core.pages.PageObject;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.remote.server.handler.DeleteSession;
 
 @DefaultUrl("http://qa5.fasttrackit.org:8008/")
 public class HomePage extends BasePage{
@@ -20,8 +23,8 @@ public class HomePage extends BasePage{
     @FindBy(css = ".fa.fa-search")
     private WebElementFacade searchIcon;
 
-    @FindBy(css = ".entry-title a")
-    private WebElementFacade homePageTitle;
+    @FindBy(css = "#post-1 > div > div > header > h2 > a")
+    private WebElementFacade welcomeHomePageMessage;
 
     @FindBy(css = "#menu-item-71")
     private WebElementFacade checkoutButton;
@@ -67,9 +70,9 @@ public class HomePage extends BasePage{
         waitFor(searchField);
         clickOn(searchIcon);
     }
-    public void verifyHomePage(){
-        homePageTitle.getText().equals("Hello world!");
-    }
+
+    public void verifyWelcomeHomePageMessage(String textFromElement){welcomeHomePageMessage.getText();
+    Assert.assertEquals("Hello world!",textFromElement);}
 
     public void clickCheckout(){
         checkoutButton.click();
@@ -87,15 +90,18 @@ public class HomePage extends BasePage{
 
     public void clickReadMoreButton(){readMoreButton.click();}
 
-    public void verifyReadMore(){readMorePageTitle.containsOnlyText("Hello world!"); }
+    public void verifyReadMore(String textFromElement){readMorePageTitle.getText();
+        Assert.assertEquals("Hello world!",textFromElement); }
 
     public void clickUncategorizedLink(){uncategorizedLink.click();}
 
-    public void verifyUncategorizedPageTitle(){uncategorizedPageTitle.getText().equals("Category: Uncategorized"); }
+    public void verifyUncategorizedPageTitle(String textFromElement){uncategorizedPageTitle.getText();
+    Assert.assertEquals("Category: Uncategorized",textFromElement);}
 
     public void verifyArchiveLink(){archiveLink.click();}
 
-    public void verifyArchivePageTitle(){archivePageTitle.getText().equals("Month: April 2018");}
+    public void verifyArchivePageTitle(String textFromElement){archivePageTitle.getText();
+    Assert.assertEquals("Month: April 2018",textFromElement);}
 
 
 

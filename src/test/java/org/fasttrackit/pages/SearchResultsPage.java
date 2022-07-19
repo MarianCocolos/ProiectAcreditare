@@ -27,7 +27,7 @@ public class SearchResultsPage extends BasePage{
     public void selectProductFromList(String product){
         for(WebElementFacade element : productsList){
             if(element.findElement(By.cssSelector(".collection_title")).getText().equalsIgnoreCase(product)){
-                element.findElement(By.cssSelector("a .onsale")).click();
+                element.click();
                 break;
             }
         }
@@ -36,4 +36,6 @@ public class SearchResultsPage extends BasePage{
     public void verifySearchResultsText(){searchResultsText.containsOnlyText("SEARCH RESULTS: “123@%&*(”");}
 
     public void verifyProductResultsMessage(){productResultsMessage.getText().equals("No products were found matching your selection.");}
+
 }
+

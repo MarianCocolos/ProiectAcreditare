@@ -3,6 +3,7 @@ package org.fasttrackit.steps.serenity;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 import org.fasttrackit.pages.HomePage;
+import org.junit.Assert;
 
 public class HomePageSteps extends ScenarioSteps {
     private HomePage homePage;
@@ -25,29 +26,28 @@ public class HomePageSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verifyReadMorePage() {
+    public void verifyReadMorePage(String text) {
         homePage.open();
         homePage.clickReadMoreButton();
-        homePage.verifyReadMore();
+        homePage.verifyReadMore(text);
     }
 
     @Step
     public void verifyUncategorizedPageLink() {
         homePage.open();
         homePage.clickUncategorizedLink();
-        homePage.verifyUncategorizedPageTitle();
+        homePage.verifyUncategorizedPageTitle("Category: Uncategorized");
     }
 
     @Step
-    public void verifyHomePageTitle(){
-        homePage.verifyHomePage();
+    public void verifyWelcomeHomePageMessage(){ homePage.verifyWelcomeHomePageMessage("Hello world!");
     }
 
     @Step
     public void verifyArchivePageLink() {
         homePage.open();
         homePage.verifyArchiveLink();
-        homePage.verifyArchivePageTitle();
+        homePage.verifyArchivePageTitle("Month: April 2018");
     }
 
 }

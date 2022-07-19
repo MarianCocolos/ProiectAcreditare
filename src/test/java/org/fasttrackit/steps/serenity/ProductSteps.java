@@ -28,13 +28,16 @@ public class ProductSteps extends ScenarioSteps {
         productPage.clickAddToCartButton();
     }
     @Step
+    public void addProductToCart(){productPage.clickAddToCartButton();}
+
+    @Step
     public void verifySuccessAddToCartMessage(String productName){productPage.verifySuccessAddToCartMessage(productName);}
 
     @Step
     public void verifyZoomButton() {
         homePage.open();
         homePage.clickShop();
-        searchResultsPage.selectProductFromList("Beanie");
+        shopPage.selectProductFromShopList("Beanie");
         productPage.clickZoomButton();
     }
     @Step
@@ -59,5 +62,12 @@ public class ProductSteps extends ScenarioSteps {
     @Step
     public void verifyAwaitingApprovalReviewMessage() { productPage.verifyAwaitingApprovalReviewMessage();}
 
+    @Step
+    public void writeReviewProduct(){
+        productPage.clickReviewsCategory();
+        productPage.setRatingFiveStars();
+        productPage.writeReview("Good!");
+        productPage.clickSubmitButton();
+    }
 }
 

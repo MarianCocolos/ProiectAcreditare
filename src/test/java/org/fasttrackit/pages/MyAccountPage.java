@@ -34,7 +34,7 @@ public class MyAccountPage extends BasePage {
     @FindBy(css = "p.woocommerce-FormRow.form-row > button")
     private WebElementFacade registerButton;
 
-    @FindBy(css = "strong:nth-child(1)")
+    @FindBy(css = "p:nth-child(1)")
     private WebElementFacade welcomeText;
 
     @FindBy(css = ".woocommerce-error li strong")
@@ -50,7 +50,6 @@ public class MyAccountPage extends BasePage {
     public void setRegisterEmailField(String registerEmail){typeInto(registerEmailField, registerEmail);}
 
     public void setRegisterPasswordField(String registerPassword) {
-        waitFor(registerPasswordField);
         withTimeoutOf(Duration.ofSeconds(30)).waitFor(registerPasswordField);
         typeInto(registerPasswordField, registerPassword);
     }
@@ -64,8 +63,6 @@ public class MyAccountPage extends BasePage {
     }
 
     public void setPasswordField(String password) {
-        waitFor(passwordField);
-        withTimeoutOf(Duration.ofSeconds(30)).waitFor(passwordField);
         typeInto(passwordField, password);
     }
 
@@ -75,7 +72,7 @@ public class MyAccountPage extends BasePage {
     }
 
     public void verifyWelcomeMessage(String userName){
-        welcomeText.getText().equals("cmarianc23");
+        welcomeText.shouldContainOnlyText("Hello "+userName+" (not "+userName+"? Log out)");
     }
 
     public void verifyEmailAddressErrorUsed(){

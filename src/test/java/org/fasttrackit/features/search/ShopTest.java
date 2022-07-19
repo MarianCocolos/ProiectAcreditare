@@ -6,7 +6,7 @@ public class ShopTest extends BaseTest{
 
     @Test
     public void verifyShopPageTitle(){
-        shopSteps.verifyShopPageTitle();}
+        shopSteps.verifyShopPageTitle("SHOP");}
 
     @Test
     public void orderProductsAllOptions(){

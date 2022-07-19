@@ -12,11 +12,29 @@ public class CartSteps extends ScenarioSteps {
     private HomePage homePage;
     private SearchResultsPage searchResultsPage;
     private CheckoutPage checkoutPage;
+    private ShopPage shopPage;
+
+    @Step
+    public void verifyCartPageTitle(String text){
+        homePage.open();
+        homePage.clickCart();
+        cartPage.verifyCartPageTitle(text);}
+
+    @Step
+    public void verifyReturnToShopButton(String text) {
+        homePage.open();
+        homePage.clickCart();
+        cartPage.verifyReturnToShopButton();
+        shopPage.verifyShopPageTitle(text);
+    }
 
     @Step
     public void clickAddToCart(){
         productPage.clickAddToCartButton();
     }
+
+    @Step
+    public void clickProceedToCheckoutButton(){cartPage.clickProceedToCheckoutButton();}
 
     @Step
     public void clickViewCartButton(){productPage.clickViewCartButton();}
@@ -25,12 +43,13 @@ public class CartSteps extends ScenarioSteps {
     public void clickRemoveCartButton(){cartPage.clickRemoveCartButton();}
 
     @Step
-    public void verifySuccessMessage(String productName){
-        cartPage.verifySuccessMessage(productName);
+    public void verifySuccessMessageAddProduct(String productName,String text){
+        cartPage.verifySuccessMessageAddProduct(productName,text);
     }
 
     @Step
-    public void verifySuccessMessageRemoveProduct(String productName) {cartPage.verifySuccessMessageRemoveProduct(productName);}
+    public void verifySuccessMessageRemoveProduct(String productName,String text) {
+        cartPage.verifySuccessMessageRemoveProduct(productName,text);}
 
     @Step
     public void checkCartSubtotalIsCorrect(){
@@ -46,21 +65,21 @@ public class CartSteps extends ScenarioSteps {
     public void addProductsToCart(){
         homePage.open();
         homePage.clickShop();
-        searchResultsPage.selectProductFromList("Beanie");
+        shopPage.selectProductFromShopList("Belt");
         productPage.clickAddToCartButton();
         homePage.clickShop();
-        searchResultsPage.selectProductFromList("Beanie with Logo");
+        shopPage.selectProductFromShopList("Cap");
         productPage.clickAddToCartButton();
         productPage.clickViewCartButton();
     }
 
     @Step
-    public void verifyProceedToCheckoutButton(){
+    public void verifyProceedToCheckoutButton(String product){
         homePage.open();
         homePage.clickShop();
-        searchResultsPage.selectProductFromList("Beanie");
+        shopPage.selectProductFromShopList(product);
         productPage.clickAddToCartButton();
         productPage.clickViewCartButton();
-        cartPage.verifyProceedToCheckoutButton();
+        cartPage.clickProceedToCheckoutButton();
     }
 }

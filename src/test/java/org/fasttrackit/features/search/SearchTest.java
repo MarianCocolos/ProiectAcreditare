@@ -5,10 +5,10 @@ import org.junit.Test;
 
 public class SearchTest extends BaseTest{
 
-    // private String searchItem = "beanie";
+     private String searchItem = "beanie";
 
     @Test
-    public void searchByAPartialNameOfAnItem(){
+    public void searchProductTest(){
         loginSteps.doLogin(Constants.USER_EMAIL,Constants.USER_PASS);
         searchSteps.doSearch("beanie");
         searchSteps.verifyProductInResults("Beanie with Logo");
@@ -25,8 +25,8 @@ public class SearchTest extends BaseTest{
     @Test
     public void searchByAnExistingItem(){
         loginSteps.doLogin(Constants.USER_EMAIL,Constants.USER_PASS);
-        searchSteps.doSearch("beanie");
-        searchSteps.verifyProductInResults("Beanie");
+        searchSteps.doSearch("beanie with Logo");
+        searchSteps.verifySuccessSearchProduct();
     }
 
     @Test

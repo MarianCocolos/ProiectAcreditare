@@ -4,36 +4,34 @@ import org.fasttrackit.utils.Constants;
 import org.junit.Test;
 
 public class CartTest extends BaseTest {
+    @Test
+    public void verifyCartPageTitle() { cartSteps.verifyCartPageTitle("Cart");}
+
+    @Test
+    public void verifyReturnToShopButton() { cartSteps.verifyReturnToShopButton("SHOP");}
 
     @Test
     public void addProductToCart() {
-        loginSteps.doLogin(Constants.USER_EMAIL, Constants.USER_PASS);
-        searchSteps.doSearch("beanie");
-        productSteps.selectProductFromList("Beanie");
-        cartSteps.clickAddToCart();
-        cartSteps.verifySuccessMessage("Beanie");
+        shopSteps.selectProduct("belt");
+        productSteps.addProductToCart();
+        cartSteps.verifySuccessMessageAddProduct("","has been added to your cart.");
     }
 
     @Test
     public void verifyPricesTest() {
-        loginSteps.doLogin(Constants.USER_EMAIL, Constants.USER_PASS);
         cartSteps.addProductsToCart();
         cartSteps.checkCartSubtotalIsCorrect();
         cartSteps.checkCartGrandTotalIsCorrect();
     }
     @Test
     public void removeProductToCart() {
-        loginSteps.doLogin(Constants.USER_EMAIL, Constants.USER_PASS);
-        searchSteps.doSearch("beanie");
-        productSteps.selectProductFromList("Beanie with Logo");
-        cartSteps.clickAddToCart();
-        cartSteps.clickViewCartButton();
+        shopSteps.addProductToCart("beanie with logo");
         cartSteps.clickRemoveCartButton();
-        cartSteps.verifySuccessMessageRemoveProduct("Beanie with Logo");
+        cartSteps.verifySuccessMessageRemoveProduct("Beanie with Logo","removed.");
     }
     @Test
     public void verifyProceedToCheckoutButton(){
-        cartSteps.verifyProceedToCheckoutButton();
-        checkoutSteps.verifyProceedToCheckoutSuccess();
+        cartSteps.verifyProceedToCheckoutButton("Polo");
+        checkoutSteps.verifyProceedToCheckoutSuccess("Checkout");
     }
 }

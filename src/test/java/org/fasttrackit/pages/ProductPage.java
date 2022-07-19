@@ -36,11 +36,12 @@ public class ProductPage extends BasePage{
     private WebElementFacade fiveStar;
     @FindBy(css = ".reviews_tab")
     private WebElementFacade reviewsCategory;
+    @FindBy(css = ".product_title")
+    private WebElementFacade nameOfProduct;
 
 
     public void clickAddToCartButton(){
-        clickOn(addToCartButton);
-    }
+        clickOn(addToCartButton);}
 
     public void clickViewCartButton(){clickOn(viewCartButton);}
 
@@ -68,4 +69,6 @@ public class ProductPage extends BasePage{
     public void setRatingFiveStars() { fiveStar.click();}
 
     public void clickReviewsCategory() { reviewsCategory.click();}
+
+    public void verifySuccessSearchProduct(){nameOfProduct.getText().equals("Beanie with Logo");}
 }
