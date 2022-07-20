@@ -23,7 +23,7 @@ public class CartPage extends BasePage {
     @FindBy(css = ".cart-subtotal .woocommerce-Price-amount")
     private WebElementFacade cartSubtotalPriceSpan;
 
-    @FindBy(css = "0")
+    @FindBy(css = ".shipping .amount")
     private WebElementFacade cartShippingFeeSpan;
 
     @FindBy(css = ".order-total .woocommerce-Price-amount")

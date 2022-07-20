@@ -13,7 +13,7 @@ public class CheckoutTest extends BaseTest{
     }
 
     @Test
-    public void verifyGrandTotalPriceWithDiscount(){
+    public void verifyGrandTotalPriceWithDiscountAndShipping(){
         checkoutSteps.addProductsToCart();
         cartSteps.clickProceedToCheckoutButton();
         checkoutSteps.addCoupon("fixed cart discount");
