@@ -23,15 +23,14 @@ public class ProductSteps extends ScenarioSteps {
     public void addToCartProduct() {
         homePage.open();
         homePage.clickShop();
-        shopPage.selectPopularity();
-        shopPage.selectFirstProductByPopularity();
+        shopPage.selectProductFromShopList("Cap");
         productPage.clickAddToCartButton();
     }
     @Step
-    public void addProductToCart(){productPage.clickAddToCartButton();}
+    public void clickAddToCartButton(){productPage.clickAddToCartButton();}
 
     @Step
-    public void verifySuccessAddToCartMessage(String productName){productPage.verifySuccessAddToCartMessage(productName);}
+    public void verifySuccessAddToCartMessage(String productName,String text){productPage.verifySuccessAddToCartMessage(productName,text);}
 
     @Step
     public void verifyZoomButton() {
@@ -60,14 +59,19 @@ public class ProductSteps extends ScenarioSteps {
     public void clickReviewsCategory() { productPage.clickReviewsCategory();}
 
     @Step
-    public void verifyAwaitingApprovalReviewMessage() { productPage.verifyAwaitingApprovalReviewMessage();}
+    public void verifyAwaitingApprovalReviewMessage(String text) { productPage.verifyAwaitingApprovalReviewMessage(text);}
 
     @Step
     public void writeReviewProduct(){
         productPage.clickReviewsCategory();
         productPage.setRatingFiveStars();
-        productPage.writeReview("Good!");
+        productPage.writeReview("Good product!");
         productPage.clickSubmitButton();
     }
+
+    @Step
+    public void clickOnAccessoriesLink(){productPage.clickAccessoriesLink();}
+    @Step
+    public void verifyAccessoriesPageTitle(String text){productPage.verifyAccessoriesPageTitle(text);}
 }
 

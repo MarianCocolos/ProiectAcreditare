@@ -52,12 +52,9 @@ public class ShopSteps extends ScenarioSteps {
     }
 
     @Step
-    public void selectFirstProductByPopularity(){
-        homePage.open();
-        homePage.clickShop();
-        shopPage.selectPopularity();
-        shopPage.selectFirstProductByPopularity();
-    }
+    public void verifyProductNameSelected(String text){shopPage.verifyProductNameSelected(text);}
 
+    @Step
+    public void verifyIfProductAddedToCart(String text){shopPage.verifyProductNameAddedToCart(text);}
 }
 

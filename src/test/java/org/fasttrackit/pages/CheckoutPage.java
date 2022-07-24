@@ -39,15 +39,15 @@ public class CheckoutPage extends BasePage{
     private WebElementFacade lastNameField;
     @FindBy(id = "billing_company")
     private WebElementFacade companyNameField;
-    @FindBy(css = "select2-selection__arrow")
-    private WebElementFacade selectCountryDropdown;
+    @FindBy(id = "billing_country")
+    private WebElementFacade selectCountrySpan;
     @FindBy(id = "billing_address_1")
     private WebElementFacade streetAddressField;
     @FindBy(id = "billing_address_2")
     private WebElementFacade apartmentField;
     @FindBy(id = "billing_city")
     private WebElementFacade townCityField;
-    @FindBy(id = "select2-billing_state-container")
+    @FindBy(id = "billing_state")
     private WebElementFacade countyField;
     @FindBy(id = "billing_postcode")
     private WebElementFacade postcodeField;
@@ -55,6 +55,12 @@ public class CheckoutPage extends BasePage{
     private WebElementFacade phoneField;
     @FindBy(id = "billing_email")
     private WebElementFacade emailAddressField;
+    @FindBy(id = "place_order")
+    private WebElementFacade placeOrderButton;
+    @FindBy(css = ".post-title")
+    private WebElementFacade orderMessage;
+    @FindBy(css = ".woocommerce-error ")
+    private WebElementFacade missingPhoneMessage;
 
 
     public void verifyCheckoutPageTitle(String textFromElement) {checkoutPageTitle.getText();
@@ -64,24 +70,36 @@ public class CheckoutPage extends BasePage{
     public void clickOnCuponLink(){haveACuponLink.click();}
     public void clickApplyCouponButton(){clickOn(applyCouponButton);}
     public void completeCouponField(String couponName){typeInto(couponField,couponName);}
-    public void verifySuccessAddCouponMessage(){successAddCouponMessage.getText().equals("Coupon code applied successfully.");}
+    public void verifySuccessAddCouponMessage(String textFromElement){successAddCouponMessage.getText();
+        Assert.assertEquals("Coupon code applied successfully.",textFromElement);}
 
     public void clickRemoveCoupon(){removeCouponButton.click();}
-    public void verifySuccessRemoveCouponMessage(){successRemoveCouponMessage.getText().equals("Coupon has been removed.");}
+    public void verifySuccessRemoveCouponMessage(String textFromElement){successRemoveCouponMessage.getText();
+        Assert.assertEquals("Coupon has been removed.",textFromElement);}
 
     public void setFirstName(String firstName){typeInto(firstNameField,firstName);}
     public void setLastName(String lastName){typeInto(lastNameField,lastName);}
     public void completeCompanyName(String companyName){typeInto(companyNameField,companyName);}
-    public void selectCountry(){
-        selectFromDropdown(selectCountryDropdown,"Russia");
-    }
+    public void selectCountry(String country){
+        selectFromDropdown(selectCountrySpan,country);
+        }
     public void completeStreetAddress(String streetAddress){typeInto(streetAddressField,streetAddress);}
     public void completeApartmentAddress(String apartmentAddress){typeInto(apartmentField,apartmentAddress);}
     public void completeTownCity(String townCity){typeInto(townCityField,townCity);}
-    public void setCountyName(String countyName){typeInto(countyField,countyName);}
+    public void setCountyName(String countyName){
+        selectFromDropdown(countyField,countyName);
+    }
     public void completePostcode(String postcodeNumber){typeInto(postcodeField,postcodeNumber);}
     public void completePhoneNumber(String phoneNumber){typeInto(phoneField,phoneNumber);}
     public void setEmailAddress(String emailAddress){typeInto(emailAddressField,emailAddress);}
+    public void clickPlaceOrder(){placeOrderButton.click();}
+
+    public void verifyOrderMessage(String textFromElement){orderMessage.getText();
+    Assert.assertEquals("ORDER RECEIVED",textFromElement);
+    }
+    public void missingPhoneMessage(String textFromElement){missingPhoneMessage.getText();
+    Assert.assertEquals("Billing Phone is a required field.",textFromElement);}
+
 
     public int getSubtotalPriceFromProducts() {
         int sum = 0;

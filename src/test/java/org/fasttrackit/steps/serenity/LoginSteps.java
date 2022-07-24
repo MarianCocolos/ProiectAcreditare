@@ -46,13 +46,13 @@ public class LoginSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verifyInvalidUsernameMessage(){
-        myAccountPage.verifyInvalidUsernameMessage();
+    public void verifyInvalidUsernameMessage(String text){
+        myAccountPage.verifyInvalidUsernameMessage(text);
     }
 
     @Step
-    public void verifyIncorrectPasswordMessage() {myAccountPage.verifyErrorIncorrectPassword();}
+    public void verifyIncorrectPasswordMessage(String text) {myAccountPage.verifyErrorIncorrectPassword(text);}
 
     @Step
-    public void verifyLoginWithoutCredentialsMessage() {myAccountPage.verifyLoginWithoutCredentialsMessage();}
+    public void verifyLoginWithoutCredentialsMessage(String text) {myAccountPage.verifyLoginWithoutCredentialsMessage(text);}
 }

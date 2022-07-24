@@ -30,18 +30,18 @@ public class RegisterSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verifyEmailAddressErrorUsed(){
-        myAccountPage.verifyEmailAddressErrorUsed();
+    public void verifyEmailAddressErrorUsed(String text){
+        myAccountPage.verifyEmailAddressErrorUsed(text);
     }
 
     @Step
-    public void verifyEmailAddressMissingError(){
-        myAccountPage.verifyEmailAddressMissingError();
+    public void verifyEmailAddressMissingError(String text){
+        myAccountPage.verifyEmailAddressMissingError(text);
     }
 
     @Step
-    public void verifyRegisterWithoutCredentials(){
-        myAccountPage.verifyRegisterWithoutCredentials();
+    public void verifyRegisterWithoutCredentials(String text){
+        myAccountPage.verifyRegisterWithoutCredentials(text);
     }
 
     @Step

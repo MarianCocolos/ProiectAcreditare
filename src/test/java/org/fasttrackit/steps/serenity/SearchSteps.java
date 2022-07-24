@@ -23,9 +23,9 @@ public class SearchSteps extends ScenarioSteps {
         Assert.assertTrue(searchResultsPage.checkListForProduct(productName));
     }
     @Step
-    public void verifySearchResultsText(){searchResultsPage.verifySearchResultsText();}
+    public void verifySearchResultsText(String text){searchResultsPage.verifySearchResultsText(text);}
     @Step
-    public void verifyProductResultsMessage(){searchResultsPage.verifyProductResultsMessage();}
+    public void verifyProductResultsMessage(String text){searchResultsPage.verifyProductResultsMessage(text);}
     @Step
-    public void verifySuccessSearchProduct(){productPage.verifySuccessSearchProduct();}
+    public void verifySuccessSearchProduct(String text){productPage.verifySuccessSearchProduct(text);}
 }

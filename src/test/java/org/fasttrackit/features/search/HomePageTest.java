@@ -4,12 +4,11 @@ import org.fasttrackit.pages.HomePage;
 import org.junit.Test;
 
 public class HomePageTest extends BaseTest{
-    private HomePage homePage;
 
 
     @Test
     public void verifyWelcomeHomePageMessage(){
-        homePage.open();
+        homePageSteps.navigateToHomepage();
         homePageSteps.verifyWelcomeHomePageMessage();
     }
 

@@ -9,7 +9,7 @@ public class ProductTest extends BaseTest{
     @Test
     public void verifyAddToCartButton(){
        productSteps.addToCartProduct();
-       productSteps.verifySuccessAddToCartMessage("Album");
+       productSteps.verifySuccessAddToCartMessage("Album","has been added to your cart.");
     }
 
     @Test
@@ -24,7 +24,13 @@ public class ProductTest extends BaseTest{
         searchSteps.doSearch("beanie");
         productSteps.selectProductFromList("Beanie");
         productSteps.writeReviewProduct();
-        productSteps.verifyAwaitingApprovalReviewMessage();
+        productSteps.verifyAwaitingApprovalReviewMessage("Your review is awaiting approval");
     }
 
+    @Test
+    public void verifyAccessoriesCategory(){
+        shopSteps.selectProduct("Cap");
+        productSteps.clickOnAccessoriesLink();
+        productSteps.verifyAccessoriesPageTitle("ACCESSORIES");
+    }
 }

@@ -62,6 +62,9 @@ public class CartSteps extends ScenarioSteps {
     }
 
     @Step
+    public void changeQuantity(String quantity){cartPage.changeQuantityProduct(quantity);}
+
+    @Step
     public void addProductsToCart(){
         homePage.open();
         homePage.clickShop();
@@ -74,10 +77,10 @@ public class CartSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verifyProceedToCheckoutButton(String product){
+    public void verifyProceedToCheckoutButton(){
         homePage.open();
         homePage.clickShop();
-        shopPage.selectProductFromShopList(product);
+        shopPage.selectProductFromShopList("Hoodie with Logo");
         productPage.clickAddToCartButton();
         productPage.clickViewCartButton();
         cartPage.clickProceedToCheckoutButton();

@@ -3,6 +3,9 @@ package org.fasttrackit.pages;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
+import net.thucydides.core.pages.components.Dropdown;
+import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 public class ProductPage extends BasePage{
 
@@ -38,15 +41,18 @@ public class ProductPage extends BasePage{
     private WebElementFacade reviewsCategory;
     @FindBy(css = ".product_title")
     private WebElementFacade nameOfProduct;
+    @FindBy(css = ".posted_in a")
+    private WebElementFacade accessoriesLink;
+    @FindBy(css = ".entry-title")
+    private WebElementFacade accessoriesTitlePage;
 
 
-    public void clickAddToCartButton(){
-        clickOn(addToCartButton);}
+    public void clickAddToCartButton(){clickOn(addToCartButton);}
 
     public void clickViewCartButton(){clickOn(viewCartButton);}
 
-    public void verifySuccessAddToCartMessage(String productName){
-        successAddToCartMessage.getText().equals(productName + " has been added to your cart.");
+    public void verifySuccessAddToCartMessage(String productName,String text){successAddToCartMessage.getText();
+        Assert.assertEquals("“"+productName+"“has been added to your cart.","“"+productName+"“" + text);
     }
     public void clickZoomButton() { clickOn(zoomButton); }
 
@@ -58,8 +64,8 @@ public class ProductPage extends BasePage{
 
     public void clickSubmitButton() { submitButton.click();}
 
-    public void verifyAwaitingApprovalReviewMessage() {
-        awaitingApprovalReviewMessage.getText().equals("Your review is awaiting approval");
+    public void verifyAwaitingApprovalReviewMessage(String textFromElement) {awaitingApprovalReviewMessage.getText();
+        Assert.assertEquals("Your review is awaiting approval",textFromElement);
     }
 
     public void setRatingOneStar() {oneStar.click();}
@@ -67,8 +73,12 @@ public class ProductPage extends BasePage{
     public void setRatingThreeStars() { threeStar.click();}
     public void setRatingFourStars() { fourStar.click();}
     public void setRatingFiveStars() { fiveStar.click();}
-
     public void clickReviewsCategory() { reviewsCategory.click();}
 
-    public void verifySuccessSearchProduct(){nameOfProduct.getText().equals("Beanie with Logo");}
+    public void verifySuccessSearchProduct(String textFromElement){nameOfProduct.getText();
+        Assert.assertEquals("Beanie with Logo",textFromElement);}
+
+    public void clickAccessoriesLink(){accessoriesLink.click();}
+    public void verifyAccessoriesPageTitle(String textFromElement){accessoriesTitlePage.getText();
+    Assert.assertEquals("ACCESSORIES",textFromElement);}
 }

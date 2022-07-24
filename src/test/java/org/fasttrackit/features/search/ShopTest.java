@@ -13,7 +13,16 @@ public class ShopTest extends BaseTest{
         shopSteps.orderProductsAllOptions();}
 
     @Test
-    public void selectFirstProductByPopularity(){
-        shopSteps.selectFirstProductByPopularity();}
+    public void selectProductFromShopList(){
+        homePageSteps.navigateToHomepage();
+        homePageSteps.navigateToShop();
+        shopSteps.selectProductFromShopList("Hoodie with Zipper");
+        shopSteps.verifyProductNameSelected("Hoodie with Zipper");
+    }
 
+    @Test
+    public void addToCartProduct() {
+       shopSteps.addProductToCart("Album");
+       shopSteps.verifyIfProductAddedToCart("Album");
+    }
 }

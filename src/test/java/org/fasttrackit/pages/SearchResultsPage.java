@@ -3,6 +3,7 @@ package org.fasttrackit.pages;
 import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.pages.PageObject;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 
 import java.util.List;
@@ -33,9 +34,11 @@ public class SearchResultsPage extends BasePage{
         }
     }
 
-    public void verifySearchResultsText(){searchResultsText.containsOnlyText("SEARCH RESULTS: “123@%&*(”");}
-
-    public void verifyProductResultsMessage(){productResultsMessage.getText().equals("No products were found matching your selection.");}
+    public void verifySearchResultsText(String textFromElement){searchResultsText.getText();
+        Assert.assertEquals("SEARCH RESULTS: “123@%&*(”",textFromElement);
+    }
+    public void verifyProductResultsMessage(String textFromElement){productResultsMessage.getText();
+        Assert.assertEquals("No products were found matching your selection.",textFromElement);}
 
 }
 

@@ -25,16 +25,16 @@ public class CheckoutSteps extends ScenarioSteps {
         checkoutPage.clickApplyCouponButton();
     }
     @Step
-    public void verifySuccessAddCouponMessage(){checkoutPage.verifySuccessAddCouponMessage();}
+    public void verifySuccessAddCouponMessage(String text){checkoutPage.verifySuccessAddCouponMessage(text);}
 
     @Step
     public void addProductsToCart(){
         homePage.open();
         homePage.clickShop();
-        shopPage.selectProductFromShopList("Long Sleeve Tee");
+        shopPage.selectProductFromShopList("Album");
         productPage.clickAddToCartButton();
         homePage.clickShop();
-        shopPage.selectProductFromShopList("Polo");
+        shopPage.selectProductFromShopList("Belt");
         productPage.clickAddToCartButton();
         productPage.clickViewCartButton();
     }
@@ -52,5 +52,49 @@ public class CheckoutSteps extends ScenarioSteps {
     }
 
     @Step
-    public void verifySuccessRemoveCouponMessage(){checkoutPage.verifySuccessRemoveCouponMessage();}
+    public void verifySuccessRemoveCouponMessage(String text){checkoutPage.verifySuccessRemoveCouponMessage(text);}
+
+    @Step
+    public void addProductToCart(String product){
+        homePage.clickShop();
+        shopPage.selectProductFromShopList(product);
+        productPage.clickAddToCartButton();
+        productPage.clickViewCartButton();
+    }
+
+    @Step
+    public void completeBillingDetails(){
+        checkoutPage.setFirstName("Marian");
+        checkoutPage.setLastName("Cocolos");
+        checkoutPage.completeCompanyName("MC SRL");
+        checkoutPage.selectCountry("Romania");
+        checkoutPage.completeStreetAddress("Metalurgie,nr4");
+        checkoutPage.completeApartmentAddress("Bloc 4,ap 23");
+        checkoutPage.completeTownCity("Cluj");
+        checkoutPage.setCountyName("Cluj");
+        checkoutPage.completePostcode("700293");
+        checkoutPage.completePhoneNumber("0747888679");
+        checkoutPage.setEmailAddress("cmarianc23@yahoo.com");
+    }
+    @Step
+    public void placeOrder(){checkoutPage.clickPlaceOrder();}
+
+    @Step
+    public void verifyOrderConfirmation(String text){checkoutPage.verifyOrderMessage(text);}
+    @Step
+    public void verifyMissingPhoneMessage(String text){checkoutPage.missingPhoneMessage(text);}
+    @Step
+    public void completeBillingDetailsWithoutPhoneNumber(){
+        checkoutPage.setFirstName("Marian");
+        checkoutPage.setLastName("Cocolos");
+        checkoutPage.completeCompanyName("MC SRL");
+        checkoutPage.selectCountry("Romania");
+        checkoutPage.completeStreetAddress("Metalurgie,nr4");
+        checkoutPage.completeApartmentAddress("Bloc 4,ap 23");
+        checkoutPage.completeTownCity("Cluj");
+        checkoutPage.setCountyName("Cluj");
+        checkoutPage.completePostcode("700293");
+        checkoutPage.completePhoneNumber("");
+        checkoutPage.setEmailAddress("cmarianc23@yahoo.com");
+    }
 }

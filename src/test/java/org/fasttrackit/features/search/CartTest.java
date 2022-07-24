@@ -2,6 +2,7 @@ package org.fasttrackit.features.search;
 
 import org.fasttrackit.utils.Constants;
 import org.junit.Test;
+import org.openqa.selenium.By;
 
 public class CartTest extends BaseTest {
     @Test
@@ -13,7 +14,7 @@ public class CartTest extends BaseTest {
     @Test
     public void addProductToCart() {
         shopSteps.selectProduct("belt");
-        productSteps.addProductToCart();
+        productSteps.clickAddToCartButton();
         cartSteps.verifySuccessMessageAddProduct("","has been added to your cart.");
     }
 
@@ -31,7 +32,8 @@ public class CartTest extends BaseTest {
     }
     @Test
     public void verifyProceedToCheckoutButton(){
-        cartSteps.verifyProceedToCheckoutButton("Polo");
+        cartSteps.verifyProceedToCheckoutButton();
         checkoutSteps.verifyProceedToCheckoutSuccess("Checkout");
     }
+
 }

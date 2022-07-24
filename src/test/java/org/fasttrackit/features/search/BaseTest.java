@@ -30,6 +30,8 @@ public class BaseTest {
     protected ShopSteps shopSteps;
     @Steps
     protected CheckoutSteps checkoutSteps;
+    @Steps
+    protected MyAccountSteps myAccountSteps;
 
     @Before
     public void maximize(){
